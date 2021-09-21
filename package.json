@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc .",
+    "build:development": "rollup -wc --environment BUILD:development",
     "lint": "eslint 'src/**/*.{json,ts,js}'",
     "format": "prettier --write ."
   },
@@ -20,16 +20,31 @@
   },
   "homepage": "https://github.com/wtnb93/flickr-bundle-downloader#readme",
   "dependencies": {
+    "@spectrum-web-components/icon": "^0.9.11",
+    "@spectrum-web-components/icons-workflow": "^0.6.11",
+    "@spectrum-web-components/theme": "^0.8.14",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.0.0-rc.4"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
+    "@web/rollup-plugin-copy": "^0.3.0",
+    "@web/rollup-plugin-html": "^1.10.1",
+    "@web/rollup-plugin-polyfills-loader": "^1.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
     "prettier": "^2.4.0",
+    "rollup": "^2.56.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-summary": "^1.3.0",
+    "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.4.3"
   }
 }
