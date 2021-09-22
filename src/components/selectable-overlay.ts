@@ -7,7 +7,7 @@ import {
   CheckmarkCircleIcon,
   setCustomTemplateLiteralTag,
 } from '@spectrum-web-components/icons-workflow/src/icons.js'
-import '@spectrum-web-components/theme/theme-lightest.js';
+import '@spectrum-web-components/theme/theme-lightest.js'
 
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
@@ -33,36 +33,38 @@ class SelectableOverlay extends LitElement {
       height: 100%;
       cursor: pointer;
       z-index: 10000;
-      box-sizing: border-box;
-      display: flex;
-      align-items: end;
-      border: solid 2px #1473e6;
+      padding: 4px;
+    }
+    .container.selected {
+      background: rgba(20, 115, 230, 0.1);
     }
     .flex {
       display: flex;
       background: white;
-      width: 100%;
-      padding: 8px;
-      justify-content: space-evenly;
-      box-sizing: border-box;
       color: #1473e6;
-    }
-    .selected {
-      background: #AACCF6;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
     }
   `
 
   constructor() {
     super()
-    this.addEventListener('click', () => { this.selected = !this.selected })
+    this.addEventListener('click', () => {
+      this.selected = !this.selected
+    })
   }
 
   // Use the controller in render()
   render(): TemplateResult {
     return html`
-      <div class="container">
-        <div class="${this.selected && 'selected'} flex">
-          ${this.selected ? CheckmarkCircleIcon({width: 24, height: 24}) : AddToSelectionIcon({width: 24, height: 24})}
+      <div class="${this.selected && 'selected'} container">
+        <div class="flex">
+          ${this.selected
+            ? CheckmarkCircleIcon()
+            : AddToSelectionIcon()}
         </div>
       </div>
     `

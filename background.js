@@ -1,1 +1,1 @@
-chrome.action.setBadgeText({text: "10+"})
+chrome.action.setBadgeText({ text: '10+' })
