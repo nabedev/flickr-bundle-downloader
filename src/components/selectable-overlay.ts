@@ -36,7 +36,7 @@ class SelectableOverlay extends LitElement {
       padding: 4px;
     }
     .container.selected {
-      background: rgba(20, 115, 230, 0.1);
+      background: rgba(20, 115, 230, 0.2);
     }
     .flex {
       display: flex;
