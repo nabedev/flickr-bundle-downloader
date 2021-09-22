@@ -27,13 +27,17 @@ class SelectableOverlay extends LitElement {
   static styles = css`
     :host {
       all: initial;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      position: absolute;
     }
     .container {
       width: 100%;
       height: 100%;
       cursor: pointer;
-      z-index: 10000;
       padding: 4px;
+      box-sizing: border-box;
     }
     .container.selected {
       background: rgba(20, 115, 230, 0.2);
@@ -42,8 +46,8 @@ class SelectableOverlay extends LitElement {
       display: flex;
       background: white;
       color: #1473e6;
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       justify-content: center;
       align-items: center;
