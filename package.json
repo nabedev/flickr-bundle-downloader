@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/wtnb93/flickr-bundle-downloader#readme",
   "dependencies": {
+    "@spectrum-web-components/button": "^0.14.8",
     "@spectrum-web-components/icon": "^0.9.11",
     "@spectrum-web-components/icons-workflow": "^0.6.11",
     "@spectrum-web-components/theme": "^0.8.14",

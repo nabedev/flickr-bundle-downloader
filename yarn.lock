@@ -373,12 +373,33 @@
     lit-html "^1.0.0"
     tslib "^2.0.0"
 
+"@spectrum-web-components/button@^0.14.8":
+  version "0.14.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/button/-/button-0.14.8.tgz#d83138e3703a54a321a032f6c9c775d3bd3db7bd"
+  integrity sha512-95C7lQtGFJA7WH2zqJlysYrE4b2hkpfxDEMXo5hPBqdDvPDGiookwGqQh5/+ui3GqijVjCrvrBI6pRSwNKD0Tw==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/icon" "^0.9.11"
+    "@spectrum-web-components/icons-ui" "^0.6.11"
+    "@spectrum-web-components/shared" "^0.12.8"
+    tslib "^2.0.0"
+
 "@spectrum-web-components/icon@^0.9.11":
   version "0.9.11"
   resolved "https://registry.yarnpkg.com/@spectrum-web-components/icon/-/icon-0.9.11.tgz#b0aa24c701dfe4f7b422ad13966c5e5f6aa1de49"
   integrity sha512-ML8zpMkvzi8MSSIXaKT6Yb6mDioO+AxUaSHXDamFoPP3ABZytUeGIjgRfFmOP+ofz630UvZYlqE02q5I0rCw4A==
   dependencies:
     "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/iconset" "^0.5.7"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/icons-ui@^0.6.11":
+  version "0.6.11"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/icons-ui/-/icons-ui-0.6.11.tgz#be35bbad700eb7c98509e09951499d6a27edacb3"
+  integrity sha512-eQxkmiouSWQhz0uPbaGj06lb+FlD3QyLGrK+YETS9lgN9ptOmBXUwr61Wa74IEOxfj9fvMkRTlM4Uz1ebGm7XQ==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/icon" "^0.9.11"
     "@spectrum-web-components/iconset" "^0.5.7"
     tslib "^2.0.0"
 
@@ -397,6 +418,15 @@
   integrity sha512-xfrLwM5xn8MFZ8nfZYSo382H5gSyIZURy5k6m7R1JMvS6o1MDDtfPoXgam122B+9Thfd+3YZbMDtgWY/AIjfgw==
   dependencies:
     "@spectrum-web-components/base" "^0.4.5"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/shared@^0.12.8":
+  version "0.12.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/shared/-/shared-0.12.8.tgz#35400142bedf3ad1d81657137a110a648761af19"
+  integrity sha512-SUNDBH6xBNR31M8txgGb41RUtNrgH7b9BYH83Kvk5MixanrntCwkgtMfdIFErmU7Tu4tx2Ls0j7apkz2LkIi7w==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    focus-visible "^5.1.0"
     tslib "^2.0.0"
 
 "@spectrum-web-components/styles@^0.9.11":
@@ -1589,6 +1619,11 @@ flatted@^3.1.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
   integrity sha512-JaTY/wtrcSyvXJl4IMFHPKyFur1sE9AUqc0QnhOaJ0CxHtAoIV8pYDzeEfAaNEtGkOfq4gr3LBFmdXW5mOQFnA==
+
+focus-visible@^5.1.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/focus-visible/-/focus-visible-5.2.0.tgz#3a9e41fccf587bd25dcc2ef045508284f0a4d6b3"
+  integrity sha512-Rwix9pBtC1Nuy5wysTmKy+UjbDJpIfg8eHjw0rjZ1mX4GNLz1Bmd16uDpI3Gk1i70Fgcs8Csg2lPm8HULFg9DQ==
 
 forever-agent@~0.6.1:
   version "0.6.1"
