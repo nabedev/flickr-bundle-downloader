@@ -9,9 +9,10 @@ const downloadButtonEl = document.createElement('download-button')
 document.body.prepend(downloadButtonEl)
 
 thumbs.forEach(element => {
-  const selectableOverlay = document.createElement('selectable-overlay')
   if (element.classList.contains('is-video')) return
-  element.prepend(selectableOverlay)
+  const selectableOverlay = document.createElement('selectable-overlay')
+  const shadowHost = element.attachShadow({mode: 'open'})
+  shadowHost.appendChild(selectableOverlay)
 })
 
 

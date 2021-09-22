@@ -56,7 +56,9 @@ class SelectableOverlay extends LitElement {
 
   constructor() {
     super()
-    this.addEventListener('click', () => {
+    this.addEventListener('click', (e) => {
+      console.log(e)
+      console.log(this.getRootNode().host)
       this.selected = !this.selected
     })
   }
@@ -72,11 +74,6 @@ class SelectableOverlay extends LitElement {
         </div>
       </div>
     `
-  }
-
-  private onClick(e) {
-    console.log(e)
-    this.selected = !this.selected
   }
 }
 
