@@ -7,11 +7,13 @@ import minifyHTML from 'rollup-plugin-minify-html-literals'
 import summary from 'rollup-plugin-summary'
 import serve from 'rollup-plugin-serve'
 import copy from 'rollup-plugin-copy'
-
-console.log(process.env.BUILD)
+import replace from 'rollup-plugin-replace'
 
 export default {
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify( 'production' )
+    }),
     typescript(),
     // Entry point for application build; can specify a glob to build multiple
     // HTML files for non-SPA app
@@ -35,7 +37,7 @@ export default {
         },
       ],
     }),
-    process.env.BUILD === 'production' && minifyHTML(),
+    process.env.BUILD === 'production' && html({input: 'index.html'}), serve('build')
   ],
   input: 'src/index.ts',
   output: {

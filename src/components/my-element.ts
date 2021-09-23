@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
-import { connect } from 'pwa-helpers'
-
 import '@spectrum-web-components/icon'
 import {
   AddToSelectionIcon,
@@ -13,7 +11,9 @@ import '@spectrum-web-components/theme/theme-lightest.js'
 
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
+import { connect } from 'pwa-helpers'
 import { store, countUp } from '../redux/index.ts'
+
 
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
@@ -22,22 +22,24 @@ import { store, countUp } from '../redux/index.ts'
  */
 setCustomTemplateLiteralTag(html)
 
-@customElement('selectable-overlay')
-class SelectableOverlay extends connect(store)(LitElement) {
+@customElement('my-element')
+class MyElements extends connect(store)(LitElement) {
   // Create the controller and store it
-  @property()
-  selected = false
-
-  @property()
-  id
-
-  @property()
-  photoURL
 
   @property() counter
 
-  stateChanged({ counter }): void {
+  stateChanged({ counter }) {
     this.counter = counter
+  }
+
+  constructor() {
+    super()
+    this.addEventListener('click', (e) => {
+      console.log(e)
+      console.log(this.getRootNode().host)
+      this.selected = !this.selected
+      store.dispatch(countUp)
+    })
   }
 
   static styles = css`
@@ -70,41 +72,15 @@ class SelectableOverlay extends connect(store)(LitElement) {
     }
   `
 
-  connectedCallback(): void {
-    super.connectedCallback()
-    const hostNode = this.getRootNode()?.host
-    this.id = hostNode.getAttribute('id')
-    this.photoURL = hostNode.querySelector('a.overlay')?.href
-  }
-
-  constructor() {
-    super()
-    /**
-     * FIXME: Should use redux store.
-     * The host node should be registered in the redux store and the overlay component should be generated based on it.
-     */
-    this.addEventListener('click', (e) => {
-      console.log(e)
-      console.log(this.getRootNode().host)
-      this.selected = !this.selected
-      console.log(this.id)
-      store.dispatch(countUp)
-    })
-  }
-
   // Use the controller in render()
   render(): TemplateResult {
+    console.log('render')
     return html`
       <div class="${this.selected && 'selected'} container">
-      id:${this.id}
-        <div class="flex">
-          ${this.selected
-            ? CheckmarkCircleIcon()
-            : AddToSelectionIcon()}
-        </div>
+      Counter -> ${this.counter}
       </div>
     `
   }
 }
 
-export default SelectableOverlay
+export default MyElements

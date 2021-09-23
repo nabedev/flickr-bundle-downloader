@@ -17,6 +17,9 @@ import '@spectrum-web-components/button/sp-clear-button.js'
 
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
+import { connect } from 'pwa-helpers'
+import { store } from '../redux/index.ts'
+
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
  * so diff between templateresult type. so i need this.
@@ -25,10 +28,17 @@ import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/cust
 setCustomTemplateLiteralTag(html)
 
 @customElement('download-button')
-class DownloadButton extends LitElement {
+class DownloadButton extends connect(store)(LitElement) {
   // Create the controller and store it
   @property()
   selected = false
+
+  @property()
+  counter
+
+  stateChanged({ counter }) {
+    this.counter = counter
+  }
 
   static styles = css`
     :host {
@@ -62,7 +72,7 @@ class DownloadButton extends LitElement {
       <sp-theme color="darkest" scale="medium">
       <div class="container">
           <p style="margin-right: 8px">
-            Selecting 5 photos
+            Selecting ${this.counter} photos
           </p>
           <sp-button>
             <sp-icon slot="icon">${DownloadIcon()}</sp-icon>
