@@ -13,7 +13,6 @@ import '@spectrum-web-components/tooltip/sp-tooltip.js';
 
 
 import {
-  CloseIcon,
   DownloadIcon,
   CheckmarkCircleIcon,
   setCustomTemplateLiteralTag,
@@ -25,7 +24,7 @@ import '@spectrum-web-components/button/sp-clear-button.js'
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
 import { connect } from 'pwa-helpers'
-import { store, selectAll } from '../redux/reducers/photo.ts'
+import { store, selectAll, selectedAllPhoto, deselectedAllPhoto } from '../redux/reducers/photo.ts'
 
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
@@ -126,8 +125,8 @@ class DownloadButton extends connect(store)(LitElement) {
     }
     return html`
       ${this.selectedPhotos.length < this.selectablePhotos.length
-        ? html`<sp-button quiet variant="primary">SelectAll</sp-button>`
-        : html`<sp-button quiet variant="primary">DeselectAll</sp-button>`
+        ? html`<sp-button quiet variant="secondary" @click=${() => store.dispatch(selectedAllPhoto())}>SelectAll</sp-button>`
+        : html`<sp-button quiet variant="secondary" @click=${() =>store.dispatch(deselectedAllPhoto())}>DeselectAll</sp-button>`
       }
       ${this.selectedPhotos.length > 0 ? html`
         <sp-icon

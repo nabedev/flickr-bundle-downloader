@@ -19,6 +19,9 @@ interface SelectorState {
 // actions
 export const photoAdded = createAction<SelectorState>('photos/added')
 export const togglePhotoSelected = createAction<SelectorState>('photos/toggle')
+export const selectedAllPhoto = createAction<SelectorState>('photos/selectedAll')
+export const deselectedAllPhoto = createAction<SelectorState>('photos/deselectedAll')
+
 
 // Reducers
 const photosReducer = createReducer<SelectorState>(initialState, builder => {
@@ -28,6 +31,12 @@ const photosReducer = createReducer<SelectorState>(initialState, builder => {
     })
     .addCase(togglePhotoSelected, (state, action) => {
       state.entities[action.payload.id].selected = !state.entities[action.payload.id].selected
+    })
+    .addCase(selectedAllPhoto, (state) => {
+      Object.values(state.entities).forEach(entity => { entity.selected = true })
+    })
+    .addCase(deselectedAllPhoto, (state) => {
+      Object.values(state.entities).forEach(entity => { entity.selected = false })
     })
 })
 
