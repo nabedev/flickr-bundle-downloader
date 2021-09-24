@@ -10,7 +10,6 @@ const main = () => {
   )
 
   const downloadButtonEl = document.createElement('download-button')
-
   document.body.prepend(downloadButtonEl)
 
   thumbs.forEach(element => {

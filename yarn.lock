@@ -176,7 +176,7 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.15.7.tgz#0c3ed4a2eb07b165dfa85b3cc45c727334c4edae"
   integrity sha512-rycZXvQ+xS9QyIcJ9HXeDWf1uxqlbVFAUq0Rq0dbc50Zb/+wUe/ehyfzGfm9KZZF0kBejYgxltBXocP+gKdL2g==
 
-"@babel/runtime@^7.13.8":
+"@babel/runtime@^7.13.8", "@babel/runtime@^7.9.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -335,6 +335,21 @@
     node-gyp "^7.1.0"
     read-package-json-fast "^2.0.1"
 
+"@popperjs/core@^2.2.2":
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
+  integrity sha512-HnUhk1Sy9IuKrxEMdIRCxpIqPw6BFsbYSEUO9p/hNw5sMld/+3OLMWQP80F8/db9qsv3qUjs7ZR5bS/R+iinXw==
+
+"@reduxjs/toolkit@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.6.1.tgz#7bc83b47352a663bf28db01e79d17ba54b98ade9"
+  integrity sha512-pa3nqclCJaZPAyBhruQtiRwtTjottRrVJqziVZcWzI73i6L3miLTtUyWfauwv08HWtiXLx1xGyGt+yLFfW/d0A==
+  dependencies:
+    immer "^9.0.1"
+    redux "^4.1.0"
+    redux-thunk "^2.3.0"
+    reselect "^4.0.0"
+
 "@rollup/plugin-node-resolve@^13.0.4":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-13.0.4.tgz#b10222f4145a019740acb7738402130d848660c0"
@@ -364,6 +379,17 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
+"@spectrum-web-components/action-button@^0.5.8":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/action-button/-/action-button-0.5.8.tgz#ddd82fb3a8ba37d8f069ee4bb2d7940e11dae946"
+  integrity sha512-RJqQI1AA82+ELxrKlSBp7F/HCAphcqZn8otbusVRvhh6GGvEuIDOdi5smofD/lYR9nH5591mctdJKJ0lEiKxtw==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/button" "^0.14.8"
+    "@spectrum-web-components/icon" "^0.9.11"
+    "@spectrum-web-components/icons-ui" "^0.6.11"
+    tslib "^2.0.0"
+
 "@spectrum-web-components/base@^0.4.5":
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/@spectrum-web-components/base/-/base-0.4.5.tgz#cd6945faa03c2dad6685877335fef5f103c7735f"
@@ -382,6 +408,14 @@
     "@spectrum-web-components/icon" "^0.9.11"
     "@spectrum-web-components/icons-ui" "^0.6.11"
     "@spectrum-web-components/shared" "^0.12.8"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/divider@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/divider/-/divider-0.2.8.tgz#08dc81dcc8baa3dd4349acab4e05f297c9c53f6d"
+  integrity sha512-eiZx0pyJ5FEnbzw/QU9m9v425RJ+TSp79Abi2868VykyPCkyW50bgv0/JGRo8+BX3HfRgKEcyQG/Mo6FQFD2tA==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
     tslib "^2.0.0"
 
 "@spectrum-web-components/icon@^0.9.11":
@@ -420,6 +454,35 @@
     "@spectrum-web-components/base" "^0.4.5"
     tslib "^2.0.0"
 
+"@spectrum-web-components/overlay@^0.11.15":
+  version "0.11.15"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/overlay/-/overlay-0.11.15.tgz#6d7e64e372ccffa91604489d942ed20346dd4390"
+  integrity sha512-l0pEPz4L+gAXeRy3twSn2uKahaikK+NoTev5DzfOksmEPMX7gCYoFvukSp0h9LfxJMQZqpBuqm7xalIFjOxTdQ==
+  dependencies:
+    "@popperjs/core" "^2.2.2"
+    "@spectrum-web-components/action-button" "^0.5.8"
+    "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/shared" "^0.12.8"
+    "@spectrum-web-components/theme" "^0.8.14"
+    popper-max-size-modifier "^0.2.0"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/progress-circle@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/progress-circle/-/progress-circle-0.2.8.tgz#bf2f20351df7d667915129df04d84bc94c11edc9"
+  integrity sha512-cy0BNI1MkYd5ZEm6u6I5g4rdsxY0m3M0NTadtqWqTV5en6voJQwMNewfT+W1josL5DITz1I2vDb3BfSp5EW/YQ==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/quick-actions@^0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/quick-actions/-/quick-actions-0.4.9.tgz#b7e445e7a0459e09ce1c8ebdc3b6f960fcf14953"
+  integrity sha512-7nSsEoSgA1uBghZc2oTRhyUYfZZUuyTd/39WDnxEUCGheTVs2Zl68jZ+zJoSxB/LZZDfi7h51oq/ZdvHk6GW+A==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    tslib "^2.0.0"
+
 "@spectrum-web-components/shared@^0.12.8":
   version "0.12.8"
   resolved "https://registry.yarnpkg.com/@spectrum-web-components/shared/-/shared-0.12.8.tgz#35400142bedf3ad1d81657137a110a648761af19"
@@ -443,6 +506,26 @@
   dependencies:
     "@spectrum-web-components/base" "^0.4.5"
     "@spectrum-web-components/styles" "^0.9.11"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/toast@^0.8.16":
+  version "0.8.16"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/toast/-/toast-0.8.16.tgz#cb75ca71d4daf22204dc12d07be4661798ca89a6"
+  integrity sha512-iXG6icqYKtpabcaOxHjaYuylBDkLh3UVfcbsfpxGgUWP+l9lhvth5EFjy1HS8kps7j6WEwLP5sxe3SmwDRqltQ==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/button" "^0.14.8"
+    "@spectrum-web-components/icon" "^0.9.11"
+    "@spectrum-web-components/icons-workflow" "^0.6.11"
+    tslib "^2.0.0"
+
+"@spectrum-web-components/tooltip@^0.8.17":
+  version "0.8.17"
+  resolved "https://registry.yarnpkg.com/@spectrum-web-components/tooltip/-/tooltip-0.8.17.tgz#0fcff4a0a9d400a2048be6ec64bbf6b0896ac640"
+  integrity sha512-zkM+AQPXr5xeroWZitwZRR7kgcZ0qqzQwmkVoydau7zayMRqiFnRJbXMsbAZvVr+Le/k1T8/edR2IA5Y0ucpJg==
+  dependencies:
+    "@spectrum-web-components/base" "^0.4.5"
+    "@spectrum-web-components/overlay" "^0.11.15"
     tslib "^2.0.0"
 
 "@tootallnate/once@1":
@@ -1944,6 +2027,11 @@ ignore@^5.1.1, ignore@^5.1.4:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
   integrity sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
 
+immer@^9.0.1:
+  version "9.0.6"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.6.tgz#7a96bf2674d06c8143e327cbf73539388ddf1a73"
+  integrity sha512-G95ivKpy+EvVAnAab4fVa4YGYn24J1SpEktnJX7JJ45Bd7xqME/SCplFzYFmTbrkwZbQ4xJK1xMTUYBkN6pWsQ==
+
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -2340,7 +2428,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-magic-string@^0.25.0:
+magic-string@^0.25.0, magic-string@^0.25.2:
   version "0.25.7"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
   integrity sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==
@@ -2881,6 +2969,11 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
+popper-max-size-modifier@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/popper-max-size-modifier/-/popper-max-size-modifier-0.2.0.tgz#1574744401296a488b4974909d130a85db94256f"
+  integrity sha512-UerPt9pZfTFnpSpIBVJrR3ibHMuU1k5K01AyNLfMUWCr4z1MFH+dsayPlAF9ZeYExa02HPiQn5OIMqUSVtJEbg==
+
 prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
@@ -2928,6 +3021,11 @@ punycode@^2.1.0, punycode@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+pwa-helpers@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/pwa-helpers/-/pwa-helpers-0.9.1.tgz#9ea22fa1996ab97df73b276cae962621c3fd2532"
+  integrity sha512-4sP/C9sSxQ3w80AATmvCEI3R+MHzCwr2RSZEbLyMkeJgV3cRk7ySZRUrQnBDSA7A0/z6dkYtjuXlkhN1ZFw3iA==
 
 qs@~6.5.2:
   version "6.5.2"
@@ -2984,6 +3082,18 @@ readable-stream@^2.0.6:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
+redux-thunk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+  integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
+
+redux@^4.1.0, redux@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.1.1.tgz#76f1c439bb42043f985fbd9bf21990e60bd67f47"
+  integrity sha512-hZQZdDEM25UY2P493kPYuKqviVwZ58lEmGQNeQ+gXa+U0gYPUBf7NKYazbe3m+bs/DzM/ahN12DbF+NG8i0CWw==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
@@ -3029,6 +3139,11 @@ require-from-string@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
   integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
+
+reselect@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
+  integrity sha512-qUgANli03jjAyGlnbYVAV5vvnOmJnODyABz51RdBN7M4WaVu8mecZWgyQNkG8Yqe3KRGRt0l4K4B3XVEULC4CA==
 
 resize-observer-polyfill@^1.5.1:
   version "1.5.1"
@@ -3098,6 +3213,14 @@ rollup-plugin-minify-html-literals@^1.2.6:
     minify-html-literals "^1.3.5"
     rollup-pluginutils "^2.8.2"
 
+rollup-plugin-replace@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-replace/-/rollup-plugin-replace-2.2.0.tgz#f41ae5372e11e7a217cde349c8b5d5fd115e70e3"
+  integrity sha512-/5bxtUPkDHyBJAKketb4NfaeZjL5yLZdeUihSfbF2PQMz+rSTEb8ARKoOl3UBT4m7/X+QOXJo3sLTcq+yMMYTA==
+  dependencies:
+    magic-string "^0.25.2"
+    rollup-pluginutils "^2.6.0"
+
 rollup-plugin-serve@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-serve/-/rollup-plugin-serve-1.1.0.tgz#0654a57021a21b903340c69940f7463706e8288d"
@@ -3125,7 +3248,7 @@ rollup-plugin-terser@^7.0.2:
     serialize-javascript "^4.0.0"
     terser "^5.0.0"
 
-rollup-pluginutils@^2.8.2:
+rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==

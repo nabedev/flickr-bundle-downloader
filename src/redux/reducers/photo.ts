@@ -7,6 +7,7 @@ import {
 
 type Photo = { id: number, url: string, selected: boolean }
 
+// Adapters
 const photosAdapter = createEntityAdapter<Photo>()
 const initialState = photosAdapter.getInitialState()
 export const { selectById, selectAll } = photosAdapter.getSelectors(state => state.photos)
@@ -19,6 +20,7 @@ interface SelectorState {
 export const photoAdded = createAction<SelectorState>('photos/added')
 export const togglePhotoSelected = createAction<SelectorState>('photos/toggle')
 
+// Reducers
 const photosReducer = createReducer<SelectorState>(initialState, builder => {
   builder
     .addCase(photoAdded, (state, action) => {
