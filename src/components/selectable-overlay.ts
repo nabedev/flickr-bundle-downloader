@@ -13,7 +13,7 @@ import '@spectrum-web-components/theme/theme-lightest.js'
 
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
-import { store, countUp } from '../redux/index.ts'
+import { store, togglePhotoSelected, selectById } from '../redux/reducers/photo'
 
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
@@ -36,8 +36,9 @@ class SelectableOverlay extends connect(store)(LitElement) {
 
   @property() counter
 
-  stateChanged({ counter }): void {
-    this.counter = counter
+  stateChanged(state): void {
+    const entity = selectById(state, this.id)
+    this.selected = entity?.selected
   }
 
   static styles = css`
@@ -72,23 +73,12 @@ class SelectableOverlay extends connect(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback()
-    const hostNode = this.getRootNode()?.host
+    const hostNode = this.getRootNode().host
     this.id = hostNode.getAttribute('id')
-    this.photoURL = hostNode.querySelector('a.overlay')?.href
-  }
+    this.photoURL = hostNode.querySelector('a.overlay').getAttribute('href')
 
-  constructor() {
-    super()
-    /**
-     * FIXME: Should use redux store.
-     * The host node should be registered in the redux store and the overlay component should be generated based on it.
-     */
-    this.addEventListener('click', (e) => {
-      console.log(e)
-      console.log(this.getRootNode().host)
-      this.selected = !this.selected
-      console.log(this.id)
-      store.dispatch(countUp)
+    this.addEventListener('click', () => {
+      store.dispatch(togglePhotoSelected({ id: this.id }))
     })
   }
 
@@ -96,7 +86,6 @@ class SelectableOverlay extends connect(store)(LitElement) {
   render(): TemplateResult {
     return html`
       <div class="${this.selected && 'selected'} container">
-      id:${this.id}
         <div class="flex">
           ${this.selected
             ? CheckmarkCircleIcon()

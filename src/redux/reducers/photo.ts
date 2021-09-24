@@ -1,17 +1,36 @@
-import { createAction, createReducer } from '@reduxjs/toolkit'
+import {
+  createAction,
+  createReducer,
+  createEntityAdapter,
+  configureStore,
+} from '@reduxjs/toolkit'
+
+type Photo = { id: number, url: string, selected: boolean }
+
+const photosAdapter = createEntityAdapter<Photo>()
+const initialState = photosAdapter.getInitialState()
+export const { selectById, selectAll } = photosAdapter.getSelectors(state => state.photos)
 
 interface SelectorState {
-  photos: { id: number, url: string }[]
+  photos: Photo[]
 }
 
-const selected = createAction<number>('photos/selected')
-const unselected = createAction<number>('photos/unselected')
+// actions
+export const photoAdded = createAction<SelectorState>('photos/added')
+export const togglePhotoSelected = createAction<SelectorState>('photos/toggle')
 
-const initialState = [] as SelectorState
-
-const selectorReducer = createReducer(initialState, builder => {
+const photosReducer = createReducer<SelectorState>(initialState, builder => {
   builder
-    .addCace(selected, (state, action) => {
-      
+    .addCase(photoAdded, (state, action) => {
+      photosAdapter.addOne(state, action.payload)
     })
+    .addCase(togglePhotoSelected, (state, action) => {
+      state.entities[action.payload.id].selected = !state.entities[action.payload.id].selected
+    })
+})
+
+export const store = configureStore({
+  reducer: {
+    photos: photosReducer,
+  },
 })

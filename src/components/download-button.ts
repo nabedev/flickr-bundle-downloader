@@ -18,7 +18,7 @@ import '@spectrum-web-components/button/sp-clear-button.js'
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
 import { connect } from 'pwa-helpers'
-import { store } from '../redux/index.ts'
+import { store, selectAll } from '../redux/reducers/photo.ts'
 
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
@@ -31,13 +31,10 @@ setCustomTemplateLiteralTag(html)
 class DownloadButton extends connect(store)(LitElement) {
   // Create the controller and store it
   @property()
-  selected = false
+  selectedPhotos = []
 
-  @property()
-  counter
-
-  stateChanged({ counter }) {
-    this.counter = counter
+  stateChanged(state) {
+    this.selectedPhotos = selectAll(state).filter(entity => entity.selected )
   }
 
   static styles = css`
@@ -56,6 +53,8 @@ class DownloadButton extends connect(store)(LitElement) {
       background-color: var(--spectrum-global-color-gray-100);
       color: var(--spectrum-global-color-gray-800);
       border-radius: 6px;
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+      position: relative;
     }
   `
 
@@ -72,9 +71,9 @@ class DownloadButton extends connect(store)(LitElement) {
       <sp-theme color="darkest" scale="medium">
       <div class="container">
           <p style="margin-right: 8px">
-            Selecting ${this.counter} photos
+            Selecting ${this.selectedPhotos.length} photos
           </p>
-          <sp-button>
+          <sp-button ?disabled=${this.selectedPhotos.length === 0}>
             <sp-icon slot="icon">${DownloadIcon()}</sp-icon>
             Download
             </sp-button>
