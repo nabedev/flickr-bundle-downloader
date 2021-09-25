@@ -6,17 +6,13 @@ import '@spectrum-web-components/theme/src/themes.js'
 import '@spectrum-web-components/icon'
 import '@spectrum-web-components/icon/sp-icon.js'
 import '@spectrum-web-components/progress-circle/sp-progress-circle.js'
-import '@spectrum-web-components/toast/sp-toast.js'
-import '@spectrum-web-components/divider/sp-divider.js';
-import '@spectrum-web-components/quick-actions/sp-quick-actions.js';
-import '@spectrum-web-components/tooltip/sp-tooltip.js';
 
 
 import {
   DownloadIcon,
   CheckmarkCircleIcon,
   setCustomTemplateLiteralTag,
-} from '@spectrum-web-components/icons-workflow/src/icons.js'
+} from '@spectrum-web-components/icons-workflow'
 
 import '@spectrum-web-components/button/sp-button.js'
 import '@spectrum-web-components/button/sp-clear-button.js'
@@ -24,7 +20,9 @@ import '@spectrum-web-components/button/sp-clear-button.js'
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
 import { connect } from 'pwa-helpers'
-import { store, selectAll, selectedAllPhoto, deselectedAllPhoto } from '../redux/reducers/photo.ts'
+import store from '../redux/store.ts'
+import { selectAll, selectedAllPhoto, deselectedAllPhoto } from '../redux/reducers/photo.ts'
+import { overlayHidden } from '../redux/reducers/extension.ts'
 
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
@@ -134,10 +132,15 @@ class DownloadButton extends connect(store)(LitElement) {
           ${CheckmarkCircleIcon()}
         </sp-icon>
         <p style="color: var(--spectrum-alias-text-color-selected);">${this.selectedPhotos.length} photos</p>`
-        : null
+        : html`
+        <sp-icon
+          style="color: var(--spectrum-alias-icon-color-disabled);">
+          ${CheckmarkCircleIcon()}
+        </sp-icon>
+        <p style="color: var(--spectrum-alias-text-color-disabled);">${this.selectedPhotos.length} photos</p>`
       }
       <sp-button
-        @click=${this.clickHandler}
+        @click=${this.clickDownloadHandler}
         ?disabled=${!this.canDownload()}
       >
         <sp-icon slot="icon">${DownloadIcon()}</sp-icon>
@@ -151,18 +154,20 @@ class DownloadButton extends connect(store)(LitElement) {
     return true
   }
 
-  private async clickHandler(e) {
+  private async clickDownloadHandler(e) {
     this.isDownloadable = false
     this.loading = true
     // dammy. creating download queue
-    await new Promise(r => setTimeout(r, 5000))
+    await new Promise(r => setTimeout(r, 1000))
     this.loading = false
     this.finished = true
+    console.log('dispatch extension to false')
+    store.dispatch(overlayHidden())
     console.log(this.selectedPhotos)
   }
 
   private closeClickHandler() {
-
+    console.log('close toastd')
   }
 }
 

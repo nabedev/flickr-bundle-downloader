@@ -1,6 +1,9 @@
 import './components/selectable-overlay.ts'
 import './components/download-button.ts'
-import { store, photoAdded } from './redux/reducers/photo.ts'
+import store from './redux/store.ts'
+import { photoAdded } from './redux/reducers/photo.ts'
+import { toggleExtension, overlayShowed } from './redux/reducers/extension.ts'
+
 
 const main = () => {
   console.log('hello from extension')
@@ -21,6 +24,9 @@ const main = () => {
     const shadowHost = element.attachShadow({ mode: 'open' })
     shadowHost.appendChild(selectableOverlay)
   })
+
+  console.log('toggle')
+  store.dispatch(overlayShowed())
 }
 
 window.addEventListener('load', main)

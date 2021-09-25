@@ -8,12 +8,13 @@ import {
   AddToSelectionIcon,
   CheckmarkCircleIcon,
   setCustomTemplateLiteralTag,
-} from '@spectrum-web-components/icons-workflow/src/icons.js'
+} from '@spectrum-web-components/icons-workflow'
 import '@spectrum-web-components/theme/theme-lightest.js'
 
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
-import { store, togglePhotoSelected, selectById } from '../redux/reducers/photo'
+import store from '../redux/store.ts'
+import { togglePhotoSelected, selectById } from '../redux/reducers/photo.ts'
 
 /**
  * NOTE: By default, using html template tag in lit-html. but this project use litv3.
@@ -24,7 +25,9 @@ setCustomTemplateLiteralTag(html)
 
 @customElement('selectable-overlay')
 class SelectableOverlay extends connect(store)(LitElement) {
-  // Create the controller and store it
+  @property()
+  display = false
+  
   @property()
   selected = false
 
@@ -37,6 +40,8 @@ class SelectableOverlay extends connect(store)(LitElement) {
   @property() counter
 
   stateChanged(state): void {
+    this.display = state.extension.overlay
+
     const entity = selectById(state, this.id)
     this.selected = entity?.selected
   }
@@ -84,15 +89,16 @@ class SelectableOverlay extends connect(store)(LitElement) {
 
   // Use the controller in render()
   render(): TemplateResult {
+    if (!this.display) return html`<div>${this.display}</div>`
     return html`
       <div class="${this.selected && 'selected'} container">
+      ${this.display}
         <div class="flex">
           ${this.selected
             ? CheckmarkCircleIcon()
             : AddToSelectionIcon()}
         </div>
-      </div>
-    `
+      </div>`
   }
 }
 

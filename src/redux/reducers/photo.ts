@@ -24,7 +24,7 @@ export const deselectedAllPhoto = createAction<SelectorState>('photos/deselected
 
 
 // Reducers
-const photosReducer = createReducer<SelectorState>(initialState, builder => {
+export const photosReducer = createReducer<SelectorState>(initialState, builder => {
   builder
     .addCase(photoAdded, (state, action) => {
       photosAdapter.addOne(state, action.payload)
@@ -38,10 +38,4 @@ const photosReducer = createReducer<SelectorState>(initialState, builder => {
     .addCase(deselectedAllPhoto, (state) => {
       Object.values(state.entities).forEach(entity => { entity.selected = false })
     })
-})
-
-export const store = configureStore({
-  reducer: {
-    photos: photosReducer,
-  },
 })
