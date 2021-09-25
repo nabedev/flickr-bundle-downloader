@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
+import {classMap} from 'lit/directives/class-map.js';
+import {styleMap} from 'lit/directives/style-map.js';
 
 import { connect } from 'pwa-helpers'
 
@@ -37,29 +39,36 @@ class SelectableOverlay extends connect(store)(LitElement) {
   @property()
   photoURL
 
-  @property() counter
+  @property()
+  styles = {}
 
   stateChanged(state): void {
+    console.log(state)
+    console.log(this.id)
     this.display = state.extension.overlay
 
     const entity = selectById(state, this.id)
+    const { top, left, width, height } = entity.positions
     this.selected = entity?.selected
+    this.styles = {
+      top: `${top}px`,
+      left: `${left}px`,
+      width: `${width}px`,
+      height: `${height}px`,
+      'z-index': entity.positions['z-index']
+    }
   }
 
   static styles = css`
     :host {
       all: initial;
-      width: 100%;
-      height: 100%;
-      z-index: 10000;
-      position: absolute;
     }
     .container {
-      width: 100%;
-      height: 100%;
+      background: rgba(100, 200, 100, 0.5);
       cursor: pointer;
       padding: 4px;
       box-sizing: border-box;
+      position: absolute;
     }
     .container.selected {
       background: rgba(20, 115, 230, 0.2);
@@ -78,10 +87,6 @@ class SelectableOverlay extends connect(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback()
-    const hostNode = this.getRootNode().host
-    this.id = hostNode.getAttribute('id')
-    this.photoURL = hostNode.querySelector('a.overlay').getAttribute('href')
-
     this.addEventListener('click', () => {
       store.dispatch(togglePhotoSelected({ id: this.id }))
     })
@@ -89,9 +94,9 @@ class SelectableOverlay extends connect(store)(LitElement) {
 
   // Use the controller in render()
   render(): TemplateResult {
-    if (!this.display) return html`<div>${this.display}</div>`
+    if (!this.display) return html`<div>hoge</div>`
     return html`
-      <div class="${this.selected && 'selected'} container">
+      <div class="${this.selected && 'selected'} container" style=${styleMap(this.styles)}>
       ${this.display}
         <div class="flex">
           ${this.selected

@@ -21,7 +21,7 @@ import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/cust
 
 import { connect } from 'pwa-helpers'
 import store from '../redux/store.ts'
-import { selectAll, selectedAllPhoto, deselectedAllPhoto } from '../redux/reducers/photo.ts'
+import { selectAll, selectedAllPhoto, deselectedAllPhoto, positionChangedAll } from '../redux/reducers/photo.ts'
 import { overlayHidden } from '../redux/reducers/extension.ts'
 
 /**
@@ -57,12 +57,12 @@ class DownloadButton extends connect(store)(LitElement) {
   static styles = css`
     :host {
       all: initial;
+    }
+    .container {
       z-index: 10000;
       position: fixed;
       bottom: 10px;
       right: 10px;
-    }
-    .container {
       display: flex;
       padding: 1em;
       justify-content: space-between;
@@ -161,6 +161,7 @@ class DownloadButton extends connect(store)(LitElement) {
     await new Promise(r => setTimeout(r, 1000))
     this.loading = false
     this.finished = true
+    store.dispatch(positionChangedAll({ top: 0, left: 0, width: 0, height: 0, 'z-index': 0 }))
     console.log('dispatch extension to false')
     store.dispatch(overlayHidden())
     console.log(this.selectedPhotos)
