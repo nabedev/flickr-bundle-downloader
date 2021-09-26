@@ -43,8 +43,6 @@ class SelectableOverlay extends connect(store)(LitElement) {
   styles = {}
 
   stateChanged(state): void {
-    console.log(state)
-    console.log(this.id)
     this.display = state.extension.overlay
 
     const entity = selectById(state, this.id)

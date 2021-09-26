@@ -157,13 +157,12 @@ class DownloadButton extends connect(store)(LitElement) {
   private async clickDownloadHandler(e) {
     this.isDownloadable = false
     this.loading = true
+    store.dispatch(overlayHidden())
     // dammy. creating download queue
-    await new Promise(r => setTimeout(r, 1000))
+    await new Promise(r => setTimeout(r, 5000))
     this.loading = false
     this.finished = true
-    store.dispatch(positionChangedAll({ top: 0, left: 0, width: 0, height: 0, 'z-index': 0 }))
     console.log('dispatch extension to false')
-    store.dispatch(overlayHidden())
     console.log(this.selectedPhotos)
   }
 

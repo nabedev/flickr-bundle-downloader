@@ -31,6 +31,7 @@ export const photosReducer = createReducer<SelectorState>(initialState, builder 
       photosAdapter.addOne(state, action.payload)
     })
     .addCase(togglePhotoSelected, (state, action) => {
+      console.log(state)
       state.entities[action.payload.id].selected = !state.entities[action.payload.id].selected
     })
     .addCase(selectedAllPhoto, (state) => {
