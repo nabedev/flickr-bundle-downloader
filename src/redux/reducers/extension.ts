@@ -1,32 +1,30 @@
-import {
-  createAction,
-  createReducer,
-  createEntityAdapter,
-  configureStore,
-} from '@reduxjs/toolkit'
-import { state } from 'lit/decorators'
-
-interface ExtensionState { extension: boolean, overlay: boolean, toast: boolean }
+import { createAction, createReducer } from '@reduxjs/toolkit'
 
 // actions
-export const toggleExtension = createAction<ExtensionState>('extension/toggleExtension')
-export const toggleOverlay = createAction<ExtensionState>('extension/toggleOverlay')
-export const toggleToast = createAction<ExtensionState>('extension/toggleToast')
-export const overlayHidden = createAction<ExtensionState>('extension/overlayHidden')
-export const overlayShowed = createAction<ExtensionState>('extension/overlayShowed')
+// export const setExtensionEnabled = createAction<boolean, 'extension/enabled'>('extension/enabled')
+export const toggleOverlay = createAction<boolean>('extension/toggleOverlay')
+export const toggleToast = createAction<boolean>('extension/toggleToast')
+export const overlayHidden = createAction<boolean>('extension/overlayHidden')
+export const overlayShowed = createAction<boolean>('extension/overlayShowed')
 
-const initialState = { extension: false, overlay: false, toast: false }
+// get local strage
+type ExtensionState = { overlay: boolean; toast: boolean }
+const initialState = { overlay: false, toast: false } as ExtensionState
 
 // Reducers
-export const extensionReducer = createReducer<SelectorState>(initialState, builder => {
-  builder
-    .addCase(toggleExtension, (state) => {
-      state.extension = !state.extension
-    })
-    .addCase(overlayHidden, (state)=> {
-      state.overlay = false
-    })
-    .addCase(overlayShowed, state=> {
-      state.overlay = true
-    })
-})
+export const extensionReducer = createReducer<ExtensionState>(
+  initialState,
+  builder => {
+    builder
+      // .addCase(setExtensionEnabled, (state, action) => {
+      //   console.log(`[reducer] set state.enabled ${state.enabled} to ${action.payload.enabled}`)
+      //   state.enabled = action.payload.enabled
+      // })
+      .addCase(overlayHidden, state => {
+        state.overlay = false
+      })
+      .addCase(overlayShowed, state => {
+        state.overlay = true
+      })
+  }
+)

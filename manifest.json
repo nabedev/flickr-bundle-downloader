@@ -2,6 +2,12 @@
   "name": "Flickr Bundle Downloader",
   "version": "1.0",
   "manifest_version": 3,
+  "icons": {
+    "16": "assets/fbd-icon-16.png",
+    "48": "assets/fbd-icon-48.png",
+   "128": "assets/fbd-icon-128.png"
+  },
+  "permissions": ["storage", "downloads", "alarms"],
   "content_scripts": [
     {
       "matches": ["https://www.flickr.com/**/*"],
@@ -9,7 +15,14 @@
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
-  "action": {}
+  // v2
+  // "browser_action": {
+  //   "default_popup": "popup/popup.html"
+  // }
+  "action": {
+    "default_popup": "popup/popup.html"
+  }
 }

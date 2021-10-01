@@ -14,5 +14,10 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "class-methods-use-this": "off",
+    "import/extensions": ["error", "always", { "ignorePackages": true }],
+    "no-underscore-dangle": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state", "entity"] }]
+  }
 }

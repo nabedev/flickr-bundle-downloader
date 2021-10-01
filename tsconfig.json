@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "target": "es2019",
     "module": "es2020",
     "lib": ["es2020", "DOM", "DOM.Iterable"],
     "declaration": true,
     "declarationMap": true,
-    "outDir": "./build",
+    "outDir": "./dest",
     "rootDir": "./src",
     "strict": true,
     "noUnusedLocals": true,

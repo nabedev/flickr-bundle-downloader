@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import {classMap} from 'lit/directives/class-map.js';
-import {styleMap} from 'lit/directives/style-map.js';
+import { styleMap } from 'lit/directives/style-map.js'
 
 import { connect } from 'pwa-helpers'
 
@@ -15,7 +14,7 @@ import '@spectrum-web-components/theme/theme-lightest.js'
 
 import { TemplateResult } from '@spectrum-web-components/icons-workflow/src/custom-tag'
 
-import store from '../redux/store.ts'
+import store, { RootState } from '../redux/store.ts'
 import { togglePhotoSelected, selectById } from '../redux/reducers/photo.ts'
 
 /**
@@ -29,7 +28,7 @@ setCustomTemplateLiteralTag(html)
 class SelectableOverlay extends connect(store)(LitElement) {
   @property()
   display = false
-  
+
   @property()
   selected = false
 
@@ -42,10 +41,10 @@ class SelectableOverlay extends connect(store)(LitElement) {
   @property()
   styles = {}
 
-  stateChanged(state): void {
-    this.display = state.extension.overlay
+  stateChanged(_state: RootState): void {
+    this.display = _state.extension.overlay
 
-    const entity = selectById(state, this.id)
+    const entity = selectById(_state, this.id)
     const { top, left, width, height } = entity.positions
     this.selected = entity?.selected
     this.styles = {
@@ -53,7 +52,6 @@ class SelectableOverlay extends connect(store)(LitElement) {
       left: `${left}px`,
       width: `${width}px`,
       height: `${height}px`,
-      'z-index': entity.positions['z-index']
     }
   }
 
@@ -62,11 +60,11 @@ class SelectableOverlay extends connect(store)(LitElement) {
       all: initial;
     }
     .container {
-      background: rgba(100, 200, 100, 0.5);
       cursor: pointer;
       padding: 4px;
       box-sizing: border-box;
       position: absolute;
+      z-index: 80,
     }
     .container.selected {
       background: rgba(20, 115, 230, 0.2);
@@ -92,16 +90,14 @@ class SelectableOverlay extends connect(store)(LitElement) {
 
   // Use the controller in render()
   render(): TemplateResult {
-    if (!this.display) return html`<div>hoge</div>`
-    return html`
-      <div class="${this.selected && 'selected'} container" style=${styleMap(this.styles)}>
-      ${this.display}
-        <div class="flex">
-          ${this.selected
-            ? CheckmarkCircleIcon()
-            : AddToSelectionIcon()}
-        </div>
-      </div>`
+    return html` <div
+      class="${this.selected && 'selected'} container"
+      style=${styleMap(this.styles)}
+    >
+      <div class="flex">
+        ${this.selected ? CheckmarkCircleIcon() : AddToSelectionIcon()}
+      </div>
+    </div>`
   }
 }
 
