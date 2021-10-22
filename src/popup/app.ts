@@ -30,7 +30,7 @@ export default class ExtensionOptions extends LitElement {
   }
 
   terminateClickHandler(): void {
-    browser.runtime.sendMessage({ action: 'terminated'})
+    browser.runtime.sendMessage({ action: 'terminated' })
   }
 
   // Render the UI as a function of component state
@@ -45,7 +45,12 @@ export default class ExtensionOptions extends LitElement {
           Flickr bundle downloader
         </sp-switch>
         <sp-button-group>
-          <sp-button quiet variant="negative" @click=${this.terminateClickHandler}>Terminate</sp-button>
+          <sp-button
+            quiet
+            variant="negative"
+            @click=${this.terminateClickHandler}
+            >Terminate</sp-button
+          >
         </sp-button-group>
       </div>
     </sp-theme>`

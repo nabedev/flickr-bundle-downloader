@@ -11,12 +11,14 @@ import './components/selectable-overlay.ts'
 import './components/download-manager.ts'
 
 import ExtensionController from './controllers/extension-controller.ts'
-import DownloadController from "./controllers/download-controller.ts";
+import DownloadController from './controllers/download-controller.ts'
 import { overlayShowed } from './redux/reducers/extension.ts'
-import { photoAdded, positionChanged, selectAll } from './redux/reducers/photo.ts'
+import {
+  photoAdded,
+  positionChanged,
+  selectAll,
+} from './redux/reducers/photo.ts'
 import store, { RootState } from './redux/store.ts'
-
-
 
 @customElement('flickr-bundle-downloader')
 class App extends connect(store)(LitElement) {
@@ -30,7 +32,6 @@ class App extends connect(store)(LitElement) {
   @state()
   protected _overlay = false
 
-
   stateChanged(_state: RootState): void {
     this._photos = selectAll(_state)
     this._overlay = _state.extension.overlay
@@ -38,12 +39,12 @@ class App extends connect(store)(LitElement) {
 
   connectedCallback(): void {
     super.connectedCallback()
-    window.addEventListener('beforeunload', this.handleBeforeUnload);
+    window.addEventListener('beforeunload', this.handleBeforeUnload)
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback()
-    window.removeEventListener('beforeunload', this.handleBeforeUnload);
+    window.removeEventListener('beforeunload', this.handleBeforeUnload)
   }
 
   constructor() {
@@ -65,7 +66,6 @@ class App extends connect(store)(LitElement) {
       })
     }
     const observer = new MutationObserver(mutationCallback)
-    // const targetNode = document.querySelector('div.photo-list-view')
     const targetNode = document.querySelector('div#content')
     observer.observe(targetNode, {
       attributes: false,
@@ -112,7 +112,9 @@ class App extends connect(store)(LitElement) {
   observeResizingPhotoElement(targetNode: Element): void {
     const resizeObserver = new ResizeObserver(entries => {
       entries.forEach(entry => {
-        const href = entry.target.querySelector('a.overlay')?.getAttribute('href')
+        const href = entry.target
+          .querySelector('a.overlay')
+          ?.getAttribute('href')
         if (href === undefined) {
           console.error(`[dispachNewPhotoElement] href not found`)
           return
@@ -144,25 +146,28 @@ class App extends connect(store)(LitElement) {
 
   render(): TemplateResult {
     return html`
-    <sp-theme color="darkest" scale="midium">
-      <download-manager
-        .queue=${this.downloadController.queue}
-        @terminateDownload=${this.handleClickTerminate}
-      ></download-manager>
-      <download-button @clickDownload=${this.handleClickDownload}></download-button>
-      ${repeat(
-        this._photos,
-        photo => photo.id,
-        photo => html`
-          <selectable-overlay id=${photo.id}></selectable-overlay>`
-      )}
-    </sp-theme>
+      <sp-theme color="darkest" scale="midium">
+        <download-manager
+          .queue=${this.downloadController.queue}
+          @terminateDownload=${this.handleClickTerminate}
+        ></download-manager>
+        <download-button
+          @clickDownload=${this.handleClickDownload}
+        ></download-button>
+        ${repeat(
+          this._photos,
+          photo => photo.id,
+          photo => html` <selectable-overlay
+            id=${photo.id}
+          ></selectable-overlay>`
+        )}
+      </sp-theme>
     `
   }
 
   private handleBeforeUnload(e) {
     // Cancel the event as stated by the standard.
-    e.preventDefault();
+    e.preventDefault()
     // Chrome requires returnValue to be set.
     e.returnValue = ''
   }

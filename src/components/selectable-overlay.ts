@@ -64,7 +64,7 @@ class SelectableOverlay extends connect(store)(LitElement) {
       padding: 4px;
       box-sizing: border-box;
       position: absolute;
-      z-index: 80,
+      z-index: 80;
     }
     .container.selected {
       background: rgba(20, 115, 230, 0.2);
