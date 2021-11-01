@@ -1,5 +1,10 @@
 # flickr-bundle-downloader
 
+Add the following features to flickr.com
+- Downloading "multiple" photos using the fechAPI and DOMParser
+- Use queue to reduce request load
+- Cancel the download queue
+ 
 ## Demo
 
 TBD
