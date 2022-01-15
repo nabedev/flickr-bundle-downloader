@@ -35,20 +35,20 @@ export default [
     preserveEntrySignatures: 'strict',
     plugins: [...plugins, typescript({ outDir: 'build' })],
   },
-  {
-    input: 'src/popup/app.ts',
-    output: {
-      dir: 'build/popup',
-    },
-    preserveEntrySignatures: 'strict',
-    plugins: [
-      ...plugins,
-      typescript({
-        outDir: 'build/popup',
-        declaration: false,
-        declarationMap: false,
-      }),
-      html({ input: './src/popup/popup.html' }),
-    ],
-  },
+  // {
+  //   input: 'src/popup/app.ts',
+  //   output: {
+  //     dir: 'build/popup',
+  //   },
+  //   preserveEntrySignatures: 'strict',
+  //   plugins: [
+  //     ...plugins,
+  //     typescript({
+  //       outDir: 'build/popup',
+  //       declaration: false,
+  //       declarationMap: false,
+  //     }),
+  //     html({ input: './src/popup/popup.html' }),
+  //   ],
+  // },
 ]

@@ -104,6 +104,7 @@ export default class downloadController implements ReactiveController {
       throw new Error('Failed to parse the link')
     }
 
+    console.log(highestResolutionLnk)
     const imageViewPage = await fetchResponseText(highestResolutionLnk, signal)
     const src = parser
       .parseFromString(imageViewPage, 'text/html')

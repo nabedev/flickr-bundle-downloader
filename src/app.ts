@@ -95,7 +95,7 @@ class App extends connect(store)(LitElement) {
     store.dispatch(
       photoAdded({
         id,
-        url: `https://www.flickr.com/${path}/${id}/sizes/l/`,
+        url: `https://www.flickr.com${path}/${id}/sizes/l/`,
         selected: false,
         positions: {
           top: top + window.scrollY,

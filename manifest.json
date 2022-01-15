@@ -10,15 +10,12 @@
   "permissions": ["storage", "downloads", "alarms"],
   "content_scripts": [
     {
-      "matches": ["https://www.flickr.com/**/*"],
+      "matches": ["https://www.flickr.com/*", "https://flickr.com/*"],
       "js": ["polyfills/webcomponents-bundle.js", "./index.js"]
     }
   ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
-  },
-  "action": {
-    "default_popup": "popup/popup.html"
   }
 }
