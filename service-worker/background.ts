@@ -8,3 +8,7 @@ browser.runtime.onMessage.addListener(async message => {
     return downloadResult
   }
 })
+
+browser.runtime.onMessage.addListener(message => {
+  console.log(message)
+})

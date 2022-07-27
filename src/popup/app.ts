@@ -27,6 +27,7 @@ export default class ExtensionOptions extends LitElement {
     await browser.storage.sync.set({
       extensionEnabled: !this.extensionController.extensionEnabled,
     })
+    browser.runtime.sendMessage({ action: 'switch' })
   }
 
   terminateClickHandler(): void {
