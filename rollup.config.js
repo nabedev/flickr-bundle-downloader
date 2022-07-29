@@ -36,19 +36,26 @@ export default [
     plugins: [...plugins, typescript({ outDir: 'build' })],
   },
   {
-    input: 'src/popup/app.ts',
+    input: 'service-worker/background.ts',
     output: {
-      dir: 'build/popup',
+      dir: 'build'
     },
-    preserveEntrySignatures: 'strict',
-    plugins: [
-      ...plugins,
-      typescript({
-        outDir: 'build/popup',
-        declaration: false,
-        declarationMap: false,
-      }),
-      html({ input: './src/popup/popup.html' }),
-    ],
+    plugins: [...plugins, typescript({ outDir: 'build' })],
   },
+  // {
+  //   input: 'src/popup/app.ts',
+  //   output: {
+  //     dir: 'build/popup',
+  //   },
+  //   preserveEntrySignatures: 'strict',
+  //   plugins: [
+  //     ...plugins,
+  //     typescript({
+  //       outDir: 'build/popup',
+  //       declaration: false,
+  //       declarationMap: false,
+  //     }),
+  //     html({ input: './src/popup/popup.html' }),
+  //   ],
+  // },
 ]
