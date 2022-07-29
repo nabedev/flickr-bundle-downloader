@@ -16,7 +16,16 @@ export default class ExtensionController implements ReactiveController {
     const { extensionEnabled } = await browser.storage.sync.get(
       'extensionEnabled'
     )
-    this.extensionEnabled = extensionEnabled || false
+    if (extensionEnabled === undefined) {
+      browser.storage.sync.set({'extensionEnabled': true})
+      this.extensionEnabled = true
+    } else {
+      this.extensionEnabled = extensionEnabled
+    }
+
+    browser.runtime.onMessage.addListener(
+      message => console.log(message),
+    )
 
     browser.storage.onChanged.addListener(changes => {
       if (!changes?.extensionEnabled) return
